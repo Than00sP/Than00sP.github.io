@@ -4,78 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>คำนวณปริมาณนมเด็กแรกเกิด</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-            text-align: center;
-            margin: 0;
-            padding: 20px;
-        }
-        h1 {
-            color: #333;
-        }
-        form {
-            margin: 20px auto;
-            max-width: 400px;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        label, input, button {
-            display: block;
-            width: 100%;
-            margin: 10px 0;
-        }
-        input {
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        button {
-            padding: 10px;
-            font-size: 16px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-        table {
-            width: 50%;
-            margin: 20px auto;
-            border-collapse: collapse;
-            background-color: white;
-            border: 1px solid #ccc;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        th, td {
-            border: 1px solid #ccc;
-            padding: 10px;
-            text-align: center;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        #saveButton {
-            margin: 20px;
-            padding: 10px;
-            font-size: 16px;
-            background-color: #2196F3;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        #saveButton:hover {
-            background-color: #0b7dda;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <h1>คำนวณปริมาณนมเด็กแรกเกิด</h1>
@@ -99,37 +28,6 @@
     </table>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
-    <script>
-        document.getElementById('calcForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const input = parseFloat(document.getElementById('decimalInput').value);
-            const multipliers = [65, 65, 80, 100, 120, 150, 170];
-            const tableBody = document.getElementById('resultsTable').querySelector('tbody');
-            tableBody.innerHTML = '';
-
-            multipliers.forEach((x, index) => {
-                const result = (input * x / 8).toFixed(2);
-                const row = document.createElement('tr');
-                const indexCell = document.createElement('td');
-                indexCell.textContent = index + 1;
-                const resultCell = document.createElement('td');
-                resultCell.textContent = result;
-                row.appendChild(indexCell);
-                row.appendChild(resultCell);
-                tableBody.appendChild(row);
-            });
-        });
-
-        document.getElementById('saveButton').addEventListener('click', function() {
-            html2canvas(document.getElementById('resultsTable'), {
-                onrendered: function(canvas) {
-                    const link = document.createElement('a');
-                    link.href = canvas.toDataURL('image/png');
-                    link.download = 'table.png';
-                    link.click();
-                }
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
