@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>คำนวณปริมาณนมเด็กแรกเกิด</title>
+    <style>
+        table {
+            width: 50%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            background-color: white; /* Added white background */
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>คำนวณปริมาณนมเด็กแรกเกิด</h1>
+    <form id="calcForm">
+        <label for="decimalInput">น้ำหนักเด็กแรกเกิด (kg.)</label>
+        <input type="number" step="any" id="decimalInput" required>
+        <button type="submit">Calculate</button>
+    </form>
+    
+    <button id="saveButton">บันทึกรูปภาพ</button>
+
+    <table id="resultsTable">
+        <thead>
+            <tr>
+                <th>Day</th>
+                <th>ปริมาณนม</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+    <script>
+        document.getElementById('calcForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const input = parseFloat(document.getElementById('decimalInput').value);
+            const multipliers = [65, 65, 80, 100, 120, 150, 170];
+            const tableBody = document.getElementById('resultsTable').querySelector('tbody');
+            tableBody.innerHTML = '';
+
+            multipliers.forEach((x, index) => {
+                const result = (input * x / 8).toFixed(2);
+                const row = document.createElement('tr');
+                const indexCell = document.createElement('td');
+                indexCell.textContent = index + 1;
+                const resultCell = document.createElement('td');
+                resultCell.textContent = result;
+                row.appendChild(indexCell);
+                row.appendChild(resultCell);
+                tableBody.appendChild(row);
+            });
+        });
+
+        document.getElementById('saveButton').addEventListener('click', function() {
+            html2canvas(document.getElementById('resultsTable'), {
+                onrendered: function(canvas) {
+                    const link = document.createElement('a');
+                    link.href = canvas.toDataURL('image/png');
+                    link.download = 'table.png';
+                    link.click();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
