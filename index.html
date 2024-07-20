@@ -5,16 +5,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>คำนวณปริมาณนมเด็กแรกเกิด</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            margin: 20px auto;
+            max-width: 400px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        label, input, button {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
         table {
             width: 50%;
-            margin-top: 20px;
+            margin: 20px auto;
             border-collapse: collapse;
-            background-color: white; /* Added white background */
+            background-color: white;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
         th, td {
-            border: 1px solid black;
+            border: 1px solid #ccc;
             padding: 10px;
             text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        #saveButton {
+            margin: 20px;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #saveButton:hover {
+            background-color: #0b7dda;
         }
     </style>
 </head>
@@ -32,7 +91,7 @@
         <thead>
             <tr>
                 <th>Day</th>
-                <th>ปริมาณนม</th>
+                <th>ปริมาณนม (ml)</th>
             </tr>
         </thead>
         <tbody>
