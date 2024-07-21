@@ -7,36 +7,59 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>คำนวณปริมาณนมเด็กแรกเกิด</h1>
-    <form id="calcForm">
-        <label for="babyname">ชื่อเด็ก</label>
-        <input type="text" id="babyname" required>
-        
-        <label for="typeBirth">ประเภทการเกิด</label>
-        <select id="typeBirth" required>
-            <option value="Term">Term</option>
-            <option value="Preterm">Preterm</option>
-        </select>
-        
-        <label for="decimalInput">น้ำหนักเด็กแรกเกิด (kg.)</label>
-        <input type="number" step="any" id="decimalInput" required>
-        <button type="submit">Calculate</button>
-    </form>
-    
-    <button id="saveButton">บันทึกรูปภาพ</button>
+    <div id="formSection">
+        <h1>คำนวณปริมาณนมเด็กแรกเกิด</h1>
+        <form id="calcForm">
+            <label for="babyname">ชื่อเด็ก</label>
+            <input type="text" id="babyname" required>
 
-    <table id="resultsTable">
-        <thead>
-            <tr>
-                <th>Day</th>
-                <th>ปริมาณนม (ml)</th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
+            <label for="birthDateTime">วัน/เวลาที่เกิด (ใช้รูปแบบ 24 ชม.)</label>
+            <input type="datetime-local" id="birthDateTime" required placeholder="YYYY-MM-DDTHH:MM">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+            <label for="firstMilkTime">เวลาป้อนนมครั้งแรก</label>
+            <select id="firstMilkTime" required>
+                <option value="09:00">09:00</option>
+                <option value="12:00">12:00</option>
+                <option value="15:00">15:00</option>
+                <option value="18:00">18:00</option>
+                <option value="21:00">21:00</option>
+                <option value="24:00">24:00</option>
+                <option value="03:00">03:00</option>
+                <option value="06:00">06:00</option>
+            </select>
+            
+            <label for="typeBirth">ประเภทการเกิด</label>
+            <select id="typeBirth" required>
+                <option value="Term">Term</option>
+                <option value="Preterm">Preterm</option>
+            </select>
+            
+            <label for="decimalInput">น้ำหนักเด็กแรกเกิด (kg.)</label>
+            <input type="number" step="any" id="decimalInput" required>
+            <button type="submit">Calculate</button>
+        </form>
+
+        <h2>Baby List</h2>
+        <ul id="babyList"></ul>
+    </div>
+
+    <div id="tableSection" style="display: none;">
+        <button id="backButton">Back to Start</button>
+        <button id="saveButton">บันทึกข้อมูล</button>
+        <table id="resultsTable">
+            <thead>
+                <tr>
+                    <th>Day</th>
+                    <th>ปริมาณนม (ml)</th>
+                    <th>รอบเวลา</th>
+                    <th>วันที่</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
