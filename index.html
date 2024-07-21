@@ -9,6 +9,15 @@
 <body>
     <h1>คำนวณปริมาณนมเด็กแรกเกิด</h1>
     <form id="calcForm">
+        <label for="babyname">ชื่อเด็ก</label>
+        <input type="text" id="babyname" required>
+        
+        <label for="typeBirth">ประเภทการเกิด</label>
+        <select id="typeBirth" required>
+            <option value="Term">Term</option>
+            <option value="Preterm">Preterm</option>
+        </select>
+        
         <label for="decimalInput">น้ำหนักเด็กแรกเกิด (kg.)</label>
         <input type="number" step="any" id="decimalInput" required>
         <button type="submit">Calculate</button>

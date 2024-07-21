@@ -16,12 +16,12 @@ form {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
-label, input, button {
+label, input, select, button {
     display: block;
     width: 100%;
     margin: 10px 0;
 }
-input {
+input, select {
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ccc;
