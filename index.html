@@ -38,11 +38,17 @@
             <input type="number" step="any" id="decimalInput" required>
             <button type="submit">Calculate</button>
         </form>
-
-
     </div>
 
     <div id="tableSection" style="display: none;">
+        <button id="backButton">Back to Start</button>
+        <button id="saveButton">Save Data</button>
+        <div id="babyInfo">
+            <p><strong>ชื่อเด็ก:</strong> <span id="babyNameDisplay"></span></p>
+            <p><strong>วัน/เวลาที่เกิด:</strong> <span id="birthDateTimeDisplay"></span></p>
+            <p><strong>ประเภทการเกิด:</strong> <span id="typeBirthDisplay"></span></p>
+            <p><strong>น้ำหนัก:</strong> <span id="decimalInputDisplay"></span> kg</p>
+        </div>
         <table id="resultsTable">
             <thead>
                 <tr>
@@ -50,18 +56,17 @@
                     <th>ปริมาณนม (ml)</th>
                     <th>รอบเวลา</th>
                     <th>วันที่</th>
-                    <th>Status (IF/BF)</th>
+                    <th>IF/BF</th>
                     <th>เวลาที่ให้นม</th>
-                    <th>ลงชื่อ</th>
+                    <th>ลายเซน</th>
                 </tr>
             </thead>
             <tbody>
             </tbody>
         </table>
-        <button id="backButton">Back to Start</button>
-        <button id="submitButton">Submit Data</button>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
