@@ -1,50 +1,62 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
-    text-align: center;
+    background-color: #f0f0f0;
     margin: 0;
     padding: 20px;
 }
-h1 {
-    color: #333;
-}
-form {
-    margin: 20px auto;
-    max-width: 400px;
-    background: white;
+
+#formSection, #tableSection {
+    background-color: white;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
+
+h1, h2 {
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
 label, input, select, button {
-    display: block;
-    width: 100%;
-    margin: 10px 0;
+    margin-bottom: 10px;
 }
-input, select {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
 }
-button {
-    padding: 10px;
-    font-size: 16px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+
+#formSection, #tableSection {
+    margin-bottom: 20px;
 }
-button:hover {
-    background-color: #45a049;
-}
+
 table {
-    width: 50%;
+    width: 100%;
     margin-top: 20px;
     border-collapse: collapse;
-    background-color: white; /* Added white background */
+    background-color: white;
+    display: block;
+    overflow-x: auto;
 }
+
+th, td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+}
+
+@media print {
+    table {
+        page-break-inside: avoid;
+    }
+}
+
+
 th, td {
     border: 1px solid black;
     padding: 10px;
@@ -60,4 +72,8 @@ th, td {
     cursor: pointer;
     color: blue;
     text-decoration: underline;
+}
+
+#babyList li:hover {
+    text-decoration: none;
 }

@@ -49,18 +49,30 @@ document.getElementById('calcForm').addEventListener('submit', function(event) {
             timeCell.textContent = feedingTimes[i];
             const dateCell = document.createElement('td');
             dateCell.textContent = formatDate(currentDate);
+            const statusCell = document.createElement('td');
+            statusCell.textContent = ''; // Blank cell for Status (IF/BF)
+            const feedTimeCell = document.createElement('td');
+            feedTimeCell.textContent = ''; // Blank cell for เวลาที่ให้นม
+            const signCell = document.createElement('td');
+            signCell.textContent = ''; // Blank cell for ลงชื่อ
 
             row.appendChild(dayCell);
             row.appendChild(resultCell);
             row.appendChild(timeCell);
             row.appendChild(dateCell);
+            row.appendChild(statusCell);
+            row.appendChild(feedTimeCell);
+            row.appendChild(signCell);
             tableBody.appendChild(row);
 
             babyTableData.push({
                 day: index + 1,
                 amount: result,
                 time: feedingTimes[i],
-                date: formatDate(currentDate)
+                date: formatDate(currentDate),
+                status: '', // Default empty value
+                feedTime: '', // Default empty value
+                sign: '' // Default empty value
             });
 
             // Update date if the next time passes 24:00
@@ -86,22 +98,52 @@ document.getElementById('backButton').addEventListener('click', function() {
     document.getElementById('tableSection').style.display = 'none';
 });
 
-document.getElementById('saveButton').addEventListener('click', function() {
-    // Save the table data (no image save required here)
-    alert('Data has been saved.');
+document.getElementById('submitButton').addEventListener('click', function() {
+    const dataToSubmit = [];
+    const tableRows = document.querySelectorAll('#resultsTable tbody tr');
+    tableRows.forEach(row => {
+        const cells = row.querySelectorAll('td');
+        const data = {
+            day: cells[0].textContent,
+            amount: cells[1].textContent,
+            time: cells[2].textContent,
+            date: cells[3].textContent,
+            status: cells[4].textContent,
+            feedTime: cells[5].textContent,
+            sign: cells[6].textContent
+        };
+        dataToSubmit.push(data);
+    });
+
+    const payload = {
+        babyname: document.getElementById('babyname').value,
+        birthDateTime: document.getElementById('birthDateTime').value,
+        firstMilkTime: document.getElementById('firstMilkTime').value,
+        typeBirth: document.getElementById('typeBirth').value,
+        decimalInput: document.getElementById('decimalInput').value,
+        data: dataToSubmit
+    };
+
+    fetch('https://script.google.com/macros/s/AKfycbwxrr9gY3hHl86SuG0uv8nQa0NJHnmqFYqzCzrqM0w4wWDuE-B--j9r9iwch5FHZK6o/exec', {
+        method: 'POST',
+        body: JSON.stringify(payload),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => alert('Data submitted successfully'))
+    .catch(error => console.error('Error!', error.message));
 });
 
 function updateBabyList() {
-    const babyList = document.getElementById('babyList');
-    babyList.innerHTML = '';
-
+    const list = document.getElementById('babyList');
+    list.innerHTML = '';
     for (const name in babyData) {
         const listItem = document.createElement('li');
         listItem.textContent = name;
-        listItem.addEventListener('click', function() {
-            displayBabyData(name);
-        });
-        babyList.appendChild(listItem);
+        listItem.addEventListener('click', () => displayBabyData(name));
+        list.appendChild(listItem);
     }
 }
 
@@ -120,11 +162,20 @@ function displayBabyData(name) {
         timeCell.textContent = data.time;
         const dateCell = document.createElement('td');
         dateCell.textContent = data.date;
+        const statusCell = document.createElement('td');
+        statusCell.textContent = data.status;
+        const feedTimeCell = document.createElement('td');
+        feedTimeCell.textContent = data.feedTime;
+        const signCell = document.createElement('td');
+        signCell.textContent = data.sign;
 
         row.appendChild(dayCell);
         row.appendChild(resultCell);
         row.appendChild(timeCell);
         row.appendChild(dateCell);
+        row.appendChild(statusCell);
+        row.appendChild(feedTimeCell);
+        row.appendChild(signCell);
         tableBody.appendChild(row);
     });
 
