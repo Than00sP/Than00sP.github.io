@@ -7,7 +7,7 @@ body {
 
 #formSection, #tableSection {
     width: 90%;
-    max-width: 1200px;
+    max-width: 600px;
     margin: 20px auto;
     padding: 20px;
     border-radius: 8px;
@@ -15,12 +15,8 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-h1, h2 {
+h1 {
     color: #333;
-}
-
-form {
-    margin-bottom: 20px;
 }
 
 label {
@@ -30,7 +26,7 @@ label {
     color: #555;
 }
 
-input[type="text"], input[type="number"], input[type="datetime-local"], select {
+input[type="number"], select {
     width: 100%;
     padding: 8px;
     margin-bottom: 10px;

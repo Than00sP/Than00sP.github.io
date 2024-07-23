@@ -10,23 +10,8 @@
     <div id="formSection">
         <h1>คำนวณปริมาณนมเด็กแรกเกิด</h1>
         <form id="calcForm">
-            <label for="babyname">ชื่อเด็ก</label>
-            <input type="text" id="babyname" required>
-
-            <label for="birthDateTime">วัน/เวลาที่เกิด (ใช้รูปแบบ 24 ชม.)</label>
-            <input type="datetime-local" id="birthDateTime" required placeholder="YYYY-MM-DDTHH:MM">
-
-            <label for="firstMilkTime">เวลาป้อนนมครั้งแรก</label>
-            <select id="firstMilkTime" required>
-                <option value="09:00">09:00</option>
-                <option value="12:00">12:00</option>
-                <option value="15:00">15:00</option>
-                <option value="18:00">18:00</option>
-                <option value="21:00">21:00</option>
-                <option value="24:00">24:00</option>
-                <option value="03:00">03:00</option>
-                <option value="06:00">06:00</option>
-            </select>
+            <label for="babyweight">น้ำหนักเด็กแรกเกิด (kg.)</label>
+            <input type="number" step="any" id="babyweight" required>
             
             <label for="typeBirth">ประเภทการเกิด</label>
             <select id="typeBirth" required>
@@ -34,36 +19,28 @@
                 <option value="Preterm">Preterm</option>
             </select>
             
-            <label for="decimalInput">น้ำหนักเด็กแรกเกิด (kg.)</label>
-            <input type="number" step="any" id="decimalInput" required>
             <button type="submit">Calculate</button>
         </form>
     </div>
 
     <div id="tableSection" style="display: none;">
-        <button id="backButton">Back to Start</button>
-        <button id="saveButton">Save Data</button>
+        
         <div id="babyInfo">
-            <p><strong>ชื่อเด็ก:</strong> <span id="babyNameDisplay"></span></p>
-            <p><strong>วัน/เวลาที่เกิด:</strong> <span id="birthDateTimeDisplay"></span></p>
+            <p><strong>น้ำหนัก:</strong> <span id="babyweightDisplay"></span> kg</p>
             <p><strong>ประเภทการเกิด:</strong> <span id="typeBirthDisplay"></span></p>
-            <p><strong>น้ำหนัก:</strong> <span id="decimalInputDisplay"></span> kg</p>
         </div>
         <table id="resultsTable">
             <thead>
                 <tr>
                     <th>Day</th>
-                    <th>ปริมาณนม (ml)</th>
-                    <th>รอบเวลา</th>
-                    <th>วันที่</th>
-                    <th>IF/BF</th>
-                    <th>เวลาที่ให้นม</th>
-                    <th>ลายเซน</th>
+                    <th>ปริมาณนม (ml) / dose</th>
+                    <th>ปริมาณนม (ml) / day</th>
                 </tr>
             </thead>
             <tbody>
             </tbody>
         </table>
+        <button id="backButton">Back</button>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
